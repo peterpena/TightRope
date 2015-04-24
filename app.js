@@ -11,7 +11,7 @@ db.close();
 */
 
 var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('./../Downloads/Tightrope.db');
+var db = new sqlite3.Database('./Tightrope.db');
 
 
 var stmt = "SELECT Secondary, Career, Famous FROM Economics";
