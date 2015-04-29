@@ -5,5 +5,9 @@ var router = express.Router();
 router.get('/', function(req, res) {
     res.render('index', { title: 'Express' });
 });
+/* GET Sciences */
+router.get('/Sciences', function(req, res) {
+    res.render('Sciences.jade', { title: 'Sciences' });
+});
 
 module.exports = router;
