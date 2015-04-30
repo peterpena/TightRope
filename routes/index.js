@@ -10,7 +10,7 @@ router.get('/', function(req, res) {
 router.get('/Sciences', function(req, res) {
 var connectionString = "postgres://jfqjkcbhwdpwdq:vz08wqLJeLCCoFhlXniibELjua@ec2-23-21-140-156.compute-1.amazonaws.com:5432/dbecceof5l8kj9";
 var pg = require('pg');
-  pg.connect(connectionString, function(err, client, done) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
       if(err)
       {console.error("Pedro " + err);}
       else
