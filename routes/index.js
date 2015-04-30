@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var app = express();
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -7,21 +8,21 @@ router.get('/', function(req, res) {
 });
 /* GET Sciences */
 router.get('/Sciences', function(req, res) {
-    res.render('Sciences.jade', { title: 'Sciences' });
-
+var connectionString = "postgres://jfqjkcbhwdpwdq:vz08wqLJeLCCoFhlXniibELjua@ec2-23-21-140-156.compute-1.amazonaws.com:5432/dbecceof5l8kj9";
 var pg = require('pg');
-router.get('/db', function (request, response) {
-  var connectionString = "postgres://jfqjkcbhwdpwdq:vz08wqLJeLCCoFhlXniibELjua@ec2-23-21-140-156.compute-1.amazonaws.com:5432/dbecceof5l8kj9"
   pg.connect(connectionString, function(err, client, done) {
+      if(err)
+      {console.error("Pedro " + err);}
+      else
+	  {console.error("Connected");}
     client.query('SELECT * FROM test_table', function(err, result) {
       done();
       if (err)
        { console.error(err); response.send("Error " + err); }
       else
-       { response.send(result.rows); }
+	{ res.render('Sciences.jade', {Results: result.rows});}
     });
   });
-})
 });
 /* GET Arts */
 router.get('/Arts', function(req, res) {
